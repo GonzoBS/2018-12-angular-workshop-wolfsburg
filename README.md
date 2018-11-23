@@ -77,7 +77,7 @@ Die Installation kann bei langsamer Internetverbindung sehr lange dauern.
 Warte beim Schritt `Installing packages for tooling via npm.` mit Geduld ab!
 
 
-> Auf http://localhost:4200 sollte nun eine Website mit dem Text "Welcome to XXX" erscheinen!
+> Auf http://localhost:4200 sollte nun eine Website mit dem Text "Welcome to ..." erscheinen!
 Wenn bei allen Teilnehmern das Grundgerüst steht, können wir ohne Zeitverlust loslegen.
 
 ![Screenshot CLI](http://assets.angular.schule/chrome_cli_welcome.png)
