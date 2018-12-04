@@ -1,3 +1,3 @@
 import { Test } from "./test";
 
-var test = new Test(12);
+var test = new Test(42);

@@ -4,12 +4,16 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "node index.js",
+    "start": "webpack && node dist/bundle.js",
     "version": "tsc -version"
   },
   "author": "Johannes Hoppe",
   "license": "ISC",
-  "dependencies": {
-    "typescript": "^3.2.1"
+  "dependencies": {},
+  "devDependencies": {
+    "ts-loader": "^5.3.1",
+    "typescript": "^3.2.1",
+    "webpack": "^4.27.0",
+    "webpack-cli": "^3.1.2"
   }
 }
