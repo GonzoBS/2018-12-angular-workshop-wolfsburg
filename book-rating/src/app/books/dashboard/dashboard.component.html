@@ -2,5 +2,7 @@
      [ngClass]="{ grayBackground: e }">
   {{ i + 1 }}.
   <br-book
-    [book]="b"></br-book>
+    [book]="b"
+    (rated)="sortAndUpdate($event)"
+    ></br-book>
 </div>
