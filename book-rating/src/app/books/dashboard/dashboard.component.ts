@@ -19,7 +19,7 @@ export class DashboardComponent implements OnInit {
       description: 'Tolles Buch',
       rating: 5
     }, {
-      isbn: '111',
+      isbn: '11x1',
       title: 'AngularJs',
       description: 'Altes Buch',
       rating: 3

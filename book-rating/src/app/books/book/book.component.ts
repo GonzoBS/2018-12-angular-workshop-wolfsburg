@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
+import { Component, OnInit, Input, EventEmitter, Output, OnChanges, SimpleChanges } from '@angular/core';
 import { Book } from '../shared/book';
 import { BookRatingService } from '../shared/book-rating.service';
 
@@ -7,7 +7,7 @@ import { BookRatingService } from '../shared/book-rating.service';
   templateUrl: './book.component.html',
   styleUrls: ['./book.component.scss']
 })
-export class BookComponent {
+export class BookComponent implements OnChanges {
 
   @Input()
   book: Book;
@@ -16,6 +16,10 @@ export class BookComponent {
   rated = new EventEmitter<Book>();
 
   constructor(private service: BookRatingService) { }
+
+  ngOnChanges(changes: SimpleChanges) {
+    console.log('CHANGE', changes);
+  }
 
   rateDown() {
     const ratedBook = this.service.rateDown(this.book);
