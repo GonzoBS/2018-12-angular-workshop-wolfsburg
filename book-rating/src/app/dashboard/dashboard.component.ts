@@ -23,6 +23,11 @@ export class DashboardComponent implements OnInit {
       title: 'AngularJs',
       description: 'Altes Buch',
       rating: 3
+    }, {
+      isbn: '222',
+      title: 'React',
+      description: 'Hilfe, React!',
+      rating: 1
     }];
   }
 
