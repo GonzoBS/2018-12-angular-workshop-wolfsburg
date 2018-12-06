@@ -3,18 +3,20 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { BookComponent } from './book.component';
 import { RepeatDirective } from '../shared/repeat.directive';
 import { BookRatingService } from '../shared/book-rating.service';
+import { By } from '@angular/platform-browser';
 
 describe('BookComponent', () => {
   let component: BookComponent;
   let fixture: ComponentFixture<BookComponent>;
 
-  let rateUpWasCalled;
   const ratingMock = {
-    rateUp: () => { rateUpWasCalled = true; }
+    rateUp: () => {  }
   };
 
   beforeEach(async(() => {
-    rateUpWasCalled = false;
+
+    spyOn(ratingMock, 'rateUp');
+
     TestBed.configureTestingModule({
       declarations: [
         BookComponent,
@@ -48,6 +50,18 @@ describe('BookComponent', () => {
 
   it('should forward the rateUp call to the book rating service', () => {
     component.rateUp();
-    expect(rateUpWasCalled).toBe(true);
+    expect(ratingMock.rateUp).toHaveBeenCalled();
+    expect(ratingMock.rateUp).not.toHaveBeenCalledTimes(2);
+  });
+
+  it('should call the service when the button is clicked', () => {
+
+    const rateUpButton = fixture.debugElement
+      .query(By.css('[testRateUpButton]'))
+      .nativeElement as HTMLButtonElement;
+
+    rateUpButton.click();
+
+    expect(ratingMock.rateUp).toHaveBeenCalled();
   });
 });
