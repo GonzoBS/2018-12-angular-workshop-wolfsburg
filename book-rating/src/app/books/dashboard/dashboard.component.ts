@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Book } from '../shared/book';
+import { BookStoreService } from '../shared/book-store.service';
 
 @Component({
   selector: 'br-dashboard',
@@ -8,27 +9,13 @@ import { Book } from '../shared/book';
 })
 export class DashboardComponent implements OnInit {
 
-  books: Book[];
+  books: Book[] = [];
 
-  constructor() { }
+  constructor(private service: BookStoreService) { }
 
   ngOnInit() {
-    this.books = [{
-      isbn: '000',
-      title: 'Angular',
-      description: 'Tolles Buch',
-      rating: 5
-    }, {
-      isbn: '11x1',
-      title: 'AngularJs',
-      description: 'Altes Buch',
-      rating: 3
-    }, {
-      isbn: '222',
-      title: 'React',
-      description: 'Hilfe, React!',
-      rating: 1
-    }];
+    this.service.getAll()
+      .subscribe(books => this.books = books);
   }
 
   sortAndUpdate(ratedBook: Book) {
