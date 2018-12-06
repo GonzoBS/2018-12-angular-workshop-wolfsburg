@@ -40,4 +40,8 @@ export class DashboardComponent implements OnInit {
   get amountOfBooks() {
     return this.books ? this.books.length : 0;
   }
+
+  addBook(newBook: Book) {
+    this.books = [...this.books, newBook];
+  }
 }
