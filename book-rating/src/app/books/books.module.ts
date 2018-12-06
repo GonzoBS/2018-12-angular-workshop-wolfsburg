@@ -6,15 +6,20 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { BookComponent } from './book/book.component';
 import { RepeatDirective } from './shared/repeat.directive';
 
+import { ReactiveFormsModule } from '@angular/forms';
+import { CreateBookComponent } from './create-book/create-book.component';
+
 @NgModule({
   declarations: [
     DashboardComponent,
     BookComponent,
-    RepeatDirective
+    RepeatDirective,
+    CreateBookComponent
   ],
   imports: [
     CommonModule,
-    BooksRoutingModule
+    BooksRoutingModule,
+    ReactiveFormsModule
   ],
   exports: [
     DashboardComponent
