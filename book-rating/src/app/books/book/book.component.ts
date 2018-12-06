@@ -30,4 +30,8 @@ export class BookComponent implements OnChanges {
     const ratedBook = this.service.rateUp(this.book);
     this.rated.emit(ratedBook);
   }
+
+  getRating() {
+    return new Array(this.book.rating);
+  }
 }

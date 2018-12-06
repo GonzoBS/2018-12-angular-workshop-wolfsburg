@@ -8,6 +8,16 @@
       <h2>
         {{ book.title }}
         <span class="badge badge-secondary">{{ book.rating}}</span>
+
+        <!-- {{ '⭐️'.repeat(book.rating) }} -->
+
+        <!-- <ng-container *ngFor="let s of getRating()">
+          ⭐️
+        </ng-container> -->
+
+        <ng-container *brRepeat="book.rating">
+          ⭐️
+        </ng-container>
       </h2>
     </div>
 
@@ -15,8 +25,8 @@
     {{ book.description }}
     </p>
 
-    <button class="btn btn-primary" (click)="rateDown()">-1</button>
-    <button class="btn btn-primary" (click)="rateUp()">+1</button>
+    <button class="btn btn-primary mr-2" (click)="rateDown()">-1</button>
+    <button class="btn btn-primary mr-2" (click)="rateUp()">+1</button>
 
   </div>
 </div>
