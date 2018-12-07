@@ -8,13 +8,15 @@ import { RepeatDirective } from './shared/repeat.directive';
 
 import { ReactiveFormsModule } from '@angular/forms';
 import { CreateBookComponent } from './create-book/create-book.component';
+import { BookDetailsComponent } from './book-details/book-details.component';
 
 @NgModule({
   declarations: [
     DashboardComponent,
     BookComponent,
     RepeatDirective,
-    CreateBookComponent
+    CreateBookComponent,
+    BookDetailsComponent
   ],
   imports: [
     CommonModule,
