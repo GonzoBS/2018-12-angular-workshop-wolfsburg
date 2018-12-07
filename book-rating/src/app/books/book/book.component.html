@@ -1,19 +1,12 @@
 <div class="card mb-4">
   <div class="card-body bg-light">
 
-    <img class="img-thumbnail float-right"
-      src="//api.angular.schule/avatar/{{ book.rating }}">
+    <img width="200" class="img-thumbnail float-right" [src]="getFirstThubmnail()">
 
     <div class="card-title">
       <h2>
         {{ book.title }}
         <span class="badge badge-secondary">{{ book.rating}}</span>
-
-        <!-- {{ '⭐️'.repeat(book.rating) }} -->
-
-        <!-- <ng-container *ngFor="let s of getRating()">
-          ⭐️
-        </ng-container> -->
 
         <ng-container *brRepeat="book.rating">
           ⭐️

@@ -34,4 +34,10 @@ export class BookComponent implements OnChanges {
   getRating() {
     return new Array(this.book.rating);
   }
+
+  getFirstThubmnail() {
+    return this.book.thumbnails &&
+           this.book.thumbnails.length ?
+           this.book.thumbnails[0].url : '';
+  }
 }
