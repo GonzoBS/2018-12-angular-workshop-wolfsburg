@@ -3,7 +3,8 @@ import { ActivatedRoute } from '@angular/router';
 import { BookStoreService } from '../shared/book-store.service';
 import { Book } from '../shared/book';
 import { of, from, Observable } from 'rxjs';
-import { map, filter, mergeMap } from 'rxjs/operators';
+import { map, filter, mergeMap, catchError, concatMap, switchMap } from 'rxjs/operators';
+import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
   selector: 'br-book-details',
@@ -12,8 +13,7 @@ import { map, filter, mergeMap } from 'rxjs/operators';
 })
 export class BookDetailsComponent implements OnInit {
 
-  isbn: string;
-  book: Book;
+  book$: Observable<Book>;
 
   constructor(private route: ActivatedRoute, private service: BookStoreService) { }
 
@@ -64,11 +64,19 @@ export class BookDetailsComponent implements OnInit {
       });
     */
 
-    this.route.paramMap.pipe(
+    this.book$ =  this.route.paramMap.pipe(
       map(params => params.get('isbn')),
-      mergeMap(isbn => this.service.getSingle(isbn))
-    )
-    .subscribe(book => this.book = book);
+      switchMap(isbn => this.service.getSingle(isbn).pipe(
+        catchError(() => of(
+        {
+          isbn: '000',
+          title: 'Sorry hat was nicht geklappt',
+          description: 'test',
+          rating: 1,
+          thumbnails: []
+        }))
+      ))
+    );
   }
 
 }
